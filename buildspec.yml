@@ -1,0 +1,22 @@
+version: 0.2
+env:
+  git-credential-helper: yes
+  parameter-store:
+    GITHUB_DEPLOY_TOKEN: github_deploy_token
+phases:
+  install:
+    runtime-versions:
+      nodejs: latest
+    commands:
+      - echo "installing ..."
+      - apt-get install -y zip
+  pre_build:
+    commands:
+  build:
+    commands:
+      - ls
+      - zip myapp.zip amazon-kinesis-connector-flink-2.0.0 flink-sql-connector-kinesis_2.12-1.13.2.jar sliding-windows.py
+artifacts:
+  base-directory:
+  files:
+    - 'myapp.zip'
